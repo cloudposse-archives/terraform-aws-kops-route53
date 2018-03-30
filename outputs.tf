@@ -1,11 +1,11 @@
-output "masters_policy_id" {
-  value = "${aws_iam_policy.masters.id}"
+output "policy_id" {
+  value = "${aws_iam_policy.default.id}"
 }
 
-output "masters_policy_name" {
-  value = "${aws_iam_policy.masters.name}"
+output "policy_name" {
+  value = "${aws_iam_policy.default.name}"
 }
 
-output "masters_policy_arn" {
-  value = "${aws_iam_policy.masters.arn}"
+output "policy_arn" {
+  value = "${aws_iam_policy.default.arn}"
 }

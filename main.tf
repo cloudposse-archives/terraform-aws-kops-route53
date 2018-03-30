@@ -27,12 +27,17 @@ data "aws_iam_policy_document" "default" {
   }
 }
 
-resource "aws_iam_policy" "masters" {
+resource "aws_iam_policy" "default" {
   name   = "${module.label.id}"
   policy = "${data.aws_iam_policy_document.default.json}"
 }
 
 resource "aws_iam_role_policy_attachment" "masters" {
   role       = "${module.kops_metadata.masters_role_name}"
-  policy_arn = "${aws_iam_policy.masters.arn}"
+  policy_arn = "${aws_iam_policy.default.arn}"
+}
+
+resource "aws_iam_role_policy_attachment" "nodes" {
+  role       = "${module.kops_metadata.nodes_role_name}"
+  policy_arn = "${aws_iam_policy.default.arn}"
 }

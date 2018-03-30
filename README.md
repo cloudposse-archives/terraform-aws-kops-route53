@@ -1,20 +1,15 @@
-# terraform-aws-kops-external-dns [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-kops-external-dns.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-kops-external-dns)
+# terraform-aws-kops-route53 [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-kops-route53.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-kops-route53)
 
-Terraform module to provision an IAM role for external-dns running in a `kops` cluster.
+Terraform module to lookup the roles associated with `kops` masters and nodes, and attach an IAM policy to the roles with permissions to modify Route53 record sets.
 
-
-## Overview
-
-This module assumes you are running [external-dns](https://github.com/kubernetes-incubator/external-dns) in a `kops` cluster. 
-
-It will provision an IAM role with the required permissions and grant the nodes the permission to assume it.
+This is useful to make Kubernetes resources discoverable via AWS DNS services.
 
 
 ## Usage
 
 ```hcl
 module "kops_external_dns" {
-  source       = "git::https://github.com/cloudposse/terraform-aws-kops-external-dns.git?ref=master"
+  source       = "git::https://github.com/cloudposse/terraform-aws-kops-route53.git?ref=master"
   namespace    = "cp"
   stage        = "prod"
   name         = "external-dns"
@@ -44,29 +39,29 @@ module "kops_external_dns" {
 
 ## Outputs
 
-| Name                     | Description                    |
-|:-------------------------|:-------------------------------|
-| `masters_policy_id`      | Kops masters policy ID         |
-| `masters_policy_name`    | Kops masters policy name       |
-| `masters_policy_arn`     | Kops masters policy ARN        |
+| Name             | Description                    |
+|:-----------------|:-------------------------------|
+| `policy_id`      | Kops masters policy ID         |
+| `policy_name`    | Kops masters policy name       |
+| `policy_arn`     | Kops masters policy ARN        |
 
 
 ## Help
 
 **Got a question?**
 
-File a GitHub [issue](https://github.com/cloudposse/terraform-aws-kops-external-dns/issues), send us an [email](mailto:hello@cloudposse.com) or reach out to us on [Gitter](https://gitter.im/cloudposse/).
+File a GitHub [issue](https://github.com/cloudposse/terraform-aws-kops-route53/issues), send us an [email](mailto:hello@cloudposse.com) or reach out to us on [Gitter](https://gitter.im/cloudposse/).
 
 
 ## Contributing
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/cloudposse/terraform-aws-kops-external-dns/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/cloudposse/terraform-aws-kops-route53/issues) to report any bugs or file feature requests.
 
 ### Developing
 
-If you are interested in being a contributor and want to get involved in developing `terraform-aws-kops-external-dns`, we would love to hear from you! Shoot us an [email](mailto:hello@cloudposse.com).
+If you are interested in being a contributor and want to get involved in developing `terraform-aws-kops-route53`, we would love to hear from you! Shoot us an [email](mailto:hello@cloudposse.com).
 
 In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
@@ -105,7 +100,7 @@ See [LICENSE](LICENSE) for full details.
 
 ## About
 
-`terraform-aws-kops-external-dns` is maintained and funded by [Cloud Posse, LLC][website].
+`terraform-aws-kops-route53` is maintained and funded by [Cloud Posse, LLC][website].
 
 ![Cloud Posse](https://cloudposse.com/logo-300x69.png)
 
