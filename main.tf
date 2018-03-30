@@ -12,7 +12,6 @@ module "kops_metadata" {
   source       = "git::https://github.com/cloudposse/terraform-aws-kops-metadata.git?ref=tags/0.1.1"
   dns_zone     = "${var.name}"
   masters_name = "${var.masters_name}"
-  nodes_name   = "${var.nodes_name}"
 }
 
 data "aws_iam_policy_document" "default" {
@@ -34,10 +33,5 @@ resource "aws_iam_policy" "default" {
 
 resource "aws_iam_role_policy_attachment" "masters" {
   role       = "${module.kops_metadata.masters_role_name}"
-  policy_arn = "${aws_iam_policy.default.arn}"
-}
-
-resource "aws_iam_role_policy_attachment" "nodes" {
-  role       = "${module.kops_metadata.nodes_role_name}"
   policy_arn = "${aws_iam_policy.default.arn}"
 }

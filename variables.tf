@@ -36,9 +36,3 @@ variable "masters_name" {
   default     = "masters"
   description = "K8s masters subdomain name in the Kops DNS zone"
 }
-
-variable "nodes_name" {
-  type        = "string"
-  default     = "nodes"
-  description = "K8s nodes subdomain name in the Kops DNS zone"
-}

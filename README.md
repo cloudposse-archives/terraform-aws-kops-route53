@@ -1,10 +1,10 @@
 # terraform-aws-kops-route53 [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-kops-route53.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-kops-route53)
 
-Terraform module to lookup the roles associated with `kops` masters and nodes, and attach an IAM policy to the roles with permissions to modify Route53 record sets.
+Terraform module to lookup an IAM role associated with `kops` masters, and attach an IAM policy to the role with permissions to modify Route53 record sets.
 
 It provides the IAM permissions needed by [route53-kubernetes](https://github.com/cloudposse/route53-kubernetes) for `kops`.
 
-This is useful to make Kubernetes resources discoverable via AWS DNS services.
+This is useful to make Kubernetes services discoverable via AWS DNS services.
 
 
 ## Usage
@@ -16,7 +16,6 @@ module "kops_route53" {
   stage        = "prod"
   name         = "route53"
   masters_name = "masters"
-  nodes_name   = "nodes"
 
   tags = {
     Cluster = "k8s.domain.com"
@@ -36,7 +35,6 @@ module "kops_route53" {
 | `tags`             | `{}`         | Additional tags  (_e.g._ `map("Cluster","k8s.domain.com")`                       | No       |
 | `delimiter`        | `-`          | Delimiter to be used between `namespace`, `stage`, `name`, and `attributes`      | No       |
 | `masters_name`     | `masters`    | K8s masters subdomain name in the Kops DNS zone                                  | No       |
-| `nodes_name`       | `nodes`      | K8s nodes subdomain name in the Kops DNS zone                                    | No       |
 
 
 ## Outputs
@@ -78,7 +76,7 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
 ## License
 
-[APACHE 2.0](LICENSE) Â© 2018 [Cloud Posse, LLC](https://cloudposse.com)
+[APACHE 2.0](LICENSE) © 2018 [Cloud Posse, LLC](https://cloudposse.com)
 
 See [LICENSE](LICENSE) for full details.
 
