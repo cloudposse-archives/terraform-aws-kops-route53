@@ -14,7 +14,7 @@ module "kops_route53" {
   source       = "git::https://github.com/cloudposse/terraform-aws-kops-route53.git?ref=master"
   namespace    = "cp"
   stage        = "prod"
-  name         = "external-dns"
+  name         = "route53"
   masters_name = "masters"
   nodes_name   = "nodes"
 
@@ -31,7 +31,7 @@ module "kops_route53" {
 |:-------------------|:-------------|:---------------------------------------------------------------------------------|:--------:|
 | `namespace`        | ``           | Namespace (_e.g._ `cp` or `cloudposse`)                                          | Yes      |
 | `stage`            | ``           | Stage (_e.g._ `prod`, `dev`, `staging`)                                          | Yes      |
-| `name`             | ``           | Name (_e.g._ `external-dns`)                                                     | Yes      |
+| `name`             | ``           | Name (_e.g._ `route53`)                                                          | Yes      |
 | `attributes`       | `[]`         | Additional attributes (_e.g._ `policy` or `role`)                                | No       |
 | `tags`             | `{}`         | Additional tags  (_e.g._ `map("Cluster","k8s.domain.com")`                       | No       |
 | `delimiter`        | `-`          | Delimiter to be used between `namespace`, `stage`, `name`, and `attributes`      | No       |
