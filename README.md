@@ -1,6 +1,13 @@
 # terraform-aws-kops-external-dns [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-kops-external-dns.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-kops-external-dns)
 
-Terraform module to provision external DNS resources for Kops clusters
+Terraform module to provision an IAM role for external-dns running in a `kops` cluster.
+
+
+## Overview
+
+This module assumes you are running [external-dns](https://github.com/kubernetes-incubator/external-dns) in a `kops` cluster. 
+
+It will provision an IAM role with the required permissions and grant the nodes the permission to assume it.
 
 
 ## Usage
@@ -8,12 +15,15 @@ Terraform module to provision external DNS resources for Kops clusters
 ```hcl
 module "kops_external_dns" {
   source       = "git::https://github.com/cloudposse/terraform-aws-kops-external-dns.git?ref=master"
-  namespace    = "route53"
-  stage        = "k8s"
-  name         = "domain.com"
-  delimiter    = "."
+  namespace    = "cp"
+  stage        = "prod"
+  name         = "external-dns"
   masters_name = "masters"
   nodes_name   = "nodes"
+
+  tags = {
+    Cluster = "k8s.domain.com"
+  }
 }
 ```
 
@@ -26,7 +36,7 @@ module "kops_external_dns" {
 | `stage`            | ``           | Stage (_e.g._ `prod`, `dev`, `staging`)                                          | Yes      |
 | `name`             | ``           | Name of the Kops DNS zone                                                        | Yes      |
 | `attributes`       | `[]`         | Additional attributes (_e.g._ `policy` or `role`)                                | No       |
-| `tags`             | `{}`         | Additional tags  (_e.g._ `map("BusinessUnit","XYZ")`                             | No       |
+| `tags`             | `{}`         | Additional tags  (_e.g._ `map("Cluster","k8s.domain.com")`                       | No       |
 | `delimiter`        | `-`          | Delimiter to be used between `namespace`, `stage`, `name`, and `attributes`      | No       |
 | `masters_name`     | `masters`    | K8s masters subdomain name in the Kops DNS zone                                  | No       |
 | `nodes_name`       | `nodes`      | K8s nodes subdomain name in the Kops DNS zone                                    | No       |

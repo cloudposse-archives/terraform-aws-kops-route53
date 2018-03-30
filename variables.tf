@@ -28,7 +28,7 @@ variable "attributes" {
 variable "tags" {
   type        = "map"
   default     = {}
-  description = "Additional tags (e.g. map('BusinessUnit`,`XYZ`)"
+  description = "Additional tags (e.g. map('Cluster`,`k8s.domain.com`)"
 }
 
 variable "masters_name" {
