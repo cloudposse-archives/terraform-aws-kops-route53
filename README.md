@@ -2,7 +2,7 @@
 
 Terraform module to lookup the roles associated with `kops` masters and nodes, and attach an IAM policy to the roles with permissions to modify Route53 record sets.
 
-It provides the IAM permissions needed by https://github.com/cloudposse/route53-kubernetes for `kops`.
+It provides the IAM permissions needed by [route53-kubernetes](https://github.com/cloudposse/route53-kubernetes) for `kops`.
 
 This is useful to make Kubernetes resources discoverable via AWS DNS services.
 
