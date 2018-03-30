@@ -8,7 +8,7 @@ This is useful to make Kubernetes resources discoverable via AWS DNS services.
 ## Usage
 
 ```hcl
-module "kops_external_dns" {
+module "kops_route53" {
   source       = "git::https://github.com/cloudposse/terraform-aws-kops-route53.git?ref=master"
   namespace    = "cp"
   stage        = "prod"
@@ -39,11 +39,11 @@ module "kops_external_dns" {
 
 ## Outputs
 
-| Name             | Description                    |
-|:-----------------|:-------------------------------|
-| `policy_id`      | Kops masters policy ID         |
-| `policy_name`    | Kops masters policy name       |
-| `policy_arn`     | Kops masters policy ARN        |
+| Name             | Description         |
+|:-----------------|:--------------------|
+| `policy_id`      | Policy ID           |
+| `policy_name`    | Policy name         |
+| `policy_arn`     | Policy ARN          |
 
 
 ## Help
