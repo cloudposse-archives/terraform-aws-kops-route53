@@ -34,7 +34,7 @@ module "kops_external_dns" {
 |:-------------------|:-------------|:---------------------------------------------------------------------------------|:--------:|
 | `namespace`        | ``           | Namespace (_e.g._ `cp` or `cloudposse`)                                          | Yes      |
 | `stage`            | ``           | Stage (_e.g._ `prod`, `dev`, `staging`)                                          | Yes      |
-| `name`             | ``           | Name of the Kops DNS zone                                                        | Yes      |
+| `name`             | ``           | Name (_e.g._ `external-dns`)                                                     | Yes      |
 | `attributes`       | `[]`         | Additional attributes (_e.g._ `policy` or `role`)                                | No       |
 | `tags`             | `{}`         | Additional tags  (_e.g._ `map("Cluster","k8s.domain.com")`                       | No       |
 | `delimiter`        | `-`          | Delimiter to be used between `namespace`, `stage`, `name`, and `attributes`      | No       |

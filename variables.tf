@@ -10,7 +10,7 @@ variable "stage" {
 
 variable "name" {
   type        = "string"
-  description = "Name of the Kops DNS zone"
+  description = "Name (e.g. `external-dns`)"
 }
 
 variable "delimiter" {
@@ -28,7 +28,7 @@ variable "attributes" {
 variable "tags" {
   type        = "map"
   default     = {}
-  description = "Additional tags (e.g. map('Cluster`,`k8s.domain.com`)"
+  description = "Additional tags (e.g. map(`Cluster`,`k8s.domain.com`)"
 }
 
 variable "masters_name" {
